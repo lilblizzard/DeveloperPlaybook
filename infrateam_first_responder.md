@@ -68,14 +68,14 @@ Note that you will need to be sure you can ssh into each of the VMs from whereve
 
 ##### Code that isn't a Ruby Application
 
-We have codebases to maintain that aren't Ruby applications or gems. We have not yet settled on a long-term method for dealing with these:
+We have codebases to maintain that aren't Ruby applications or gems. We have not yet settled on a long-term method for dealing with all of these:
 
-- javascript apps with npm updates:
-  - https://github.com/sul-dlss/access-update-scripts has code to create PRs for npm package updates, but it currently only works for the sul-dlss github organization. All the sinopia code is in the LD4P github organization. There is a [pending pull request](https://github.com/sul-dlss/access-update-scripts/pull/82) that will address this.
-- java code (note that we are down to two Java repositories in our platform: [suri2](https://github.com/sul-dlss/suri2) (which is slated to be replaced with the Rails-based [suri_rails](https://github.com/sul-dlss/suri_rails) in 2020), and [etd-reporter](https://github.com/sul-dlss/etd-reporter).)
-- Go projects (such as various RIALTO components)
+- JavaScript code, which is now updated by the same [access-update-scripts](https://github.com/sul-dlss/access-update-scripts) project as our Ruby scripts.
+- Java code (note that we are down to two Java repositories in our platform: [dlss-wowza](https://github.com/sul-dlss/dlss-wowza/) (our user authentication plugin for Wowza, the media streaming software we use), and [etd-reporter](https://github.com/sul-dlss/etd-reporter).)
 
-Note that security updates affecting our Ruby **gems** will be caught when doing capistrano deployments via `gemfile audit`.
+We currently do not have an automatic update mechanism for our Java projects.
+
+Note that security updates affecting our Ruby **gems** will be caught when doing capistrano deployments via `gemfile audit`.  For some projects, we've also enabled a setting that allows GitHub to automatically create pull requests (via Dependabot) to address security vulnerabilities (for merge by human reviewers).
 
 ### Verify / Notify Coverage for Following Week
 
@@ -140,13 +140,11 @@ At the very least, the first responder should be watching:
 * Slack channels relevant to applications in the portfolio:
   - `#dlme` - "Digital Library of the Middle East" - we are responsible for dlme-transform, related to indexing of materials.
   - `#dlss-aaas` - "Accessioning as a Service" - where accessioneers may surface problems
-  - `#dlss-argo-dev`- where accessioneers and object editors may surface problems
   - `#dlss-etds-dev` - Electronic Theses and Dissertations channel
   - `#dlss-infrastructure` <-- our team's main channel
   - `#dlss-preservation-dev`
   - `#dlss-sinopia-dev` - Sinopia is our linked data channel
   - `#earthworks` - for gis-robot-suite related discussion
-  - `#pre-assembly` - where accessioneers may surface problems with pre-assembly
   - `#sdr-operations`
   - `#sul-cap-collab` - has developers in the School of Medicine working on the Profiles project (which we connect to with our sul-pub system)
   - `#web-archiving`
